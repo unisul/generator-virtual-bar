@@ -1,7 +1,8 @@
 color-primary = #2980b9
 color-bg      = #f1f3f2
 font-base     = 'Open Sans', Arial, helvetica, sans-serif
-font-title    = 'Alegreya Sans', sans-serif;
+font-title    = 'Alegreya Sans', sans-serif
+font-code     = 'Consolas', monospace
 
 *
   box-sizing: border-box
@@ -19,19 +20,23 @@ header
 
 h1
   font-family: font-title
-  color: color-primary
+  color: lighten(#333, 15%)
   font-size: 8em
   font-weight: 100
   text-align: center
   text-transform: lowercase
   line-height: 1
   margin: 0
-  //animation: colorPulse 14s infinite alternate
+  transition: .4s ease-in
   span
-    border: 2px solid white
+    transition: .4s ease-in
+    border: 2px solid lighten(#333, 15%)
     padding: 0 .2em
     border-radius: 10px
-    //animation: colorPulseBorder 10s infinite alternate
+  &:hover
+    color: white
+    span
+      border-color: white
 
 h2
   color: color-primary
@@ -48,8 +53,9 @@ pre
   padding: 1em
 
 code
+  font-family: font-code
   color: #333
-  font-size: 1.8em
+  font-size: 1.6em
 
 .container
   max-width: 1040px

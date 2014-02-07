@@ -1,11 +1,13 @@
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 body{font-family:'Open Sans',Arial,helvetica,sans-serif;font-size:62.25%;background:#f1f3f2;padding:0;margin:0}
 header{background:#333;padding:5em 0}
-h1{font-family:'Alegreya Sans',sans-serif;color:#2980b9;font-size:8em;font-weight:100;text-align:center;text-transform:lowercase;line-height:1;margin:0;}
-h1 span{border:2px solid #fff;padding:0 .2em;-webkit-border-radius:10px;border-radius:10px}
+h1{font-family:'Alegreya Sans',sans-serif;color:#525252;font-size:8em;font-weight:100;text-align:center;text-transform:lowercase;line-height:1;margin:0;-webkit-transition:0.4s ease-in;-moz-transition:0.4s ease-in;-o-transition:0.4s ease-in;-ms-transition:0.4s ease-in;transition:0.4s ease-in;}
+h1 span{-webkit-transition:0.4s ease-in;-moz-transition:0.4s ease-in;-o-transition:0.4s ease-in;-ms-transition:0.4s ease-in;transition:0.4s ease-in;border:2px solid #525252;padding:0 .2em;-webkit-border-radius:10px;border-radius:10px}
+h1:hover{color:#fff;}
+h1:hover span{border-color:#fff}
 h2{color:#2980b9;font-size:2.4em;font-weight:800;text-align:center;text-transform:lowercase;line-height:1;margin:1em 0}
 pre{background:#e4e8e6;-webkit-border-radius:3px;border-radius:3px;padding:1em}
-code{color:#333;font-size:1.8em}
+code{font-family:'Consolas',monospace;color:#333;font-size:1.6em}
 .container{max-width:1040px;margin:0 auto}
 #filters{padding:1em 0 2em;background:#dce1df;display:block}
 .filter-box{display:inline-block;margin-top:1em;margin-right:1em}

@@ -1,4 +1,4 @@
-// HTML Entities
+// HELPERS
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -24,16 +24,46 @@ $('pre').on('click', function() {
     $(this).selectText();
 });
 
-var contentBar = $('.result-item').html();
-$('#generated-code').html(htmlEntities(contentBar));
+// Generator
+var generator = {
 
-// Event keyup/type
-$('#titulo').keyup(function() {
-    
-    $('.alert').find('strong').text($('#titulo').val());
+    config: {
+        resultPreview: '.result-item',
+        generatedCode: '#generated-code',
+        fields: ['#titulo', '#outro'],
+        count: 0
+    },
 
-    var contentBar = $('.result-item').html();
-	$('#generated-code').html(htmlEntities(contentBar));
+    init: function(config) {
+        $.extend(generator.config, config);
+        $config = generator.config;
+        this.refresh($config);
+    },
 
+    refresh: function (config) {
+        var getHTMLContent = $($config.resultPreview).html();
+        $($config.generatedCode).html(htmlEntities(getHTMLContent));
+    },
+
+    autoComplete: function (config) {
+        $.extend(generator.config, config);
+        $config = generator.config;
+        $('.alert').find('strong').text($('#titulo').val());
+
+        if($config.count === 0) {
+            $('.alert').find('p').append('<strong>');
+            $config.count++;
+        }
+
+        this.refresh();
+    }
+
+};
+
+generator.init();
+
+$.each(generator.config.fields, function(key, value) {
+    $(value).on('keyup', function() {
+        generator.autoComplete();
+    });
 });
-
