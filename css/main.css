@@ -1,8 +1,8 @@
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 body{font-family:'Open Sans',Arial,helvetica,sans-serif;font-size:62.25%;background:#f1f3f2;padding:0;margin:0}
 header{background:#333;padding:5em 0}
-h1{font-family:'Alegreya Sans',sans-serif;color:#525252;font-size:8em;font-weight:100;text-align:center;text-transform:lowercase;line-height:1;margin:0;-webkit-transition:0.4s ease-in;-moz-transition:0.4s ease-in;-o-transition:0.4s ease-in;-ms-transition:0.4s ease-in;transition:0.4s ease-in;}
-h1 span{-webkit-transition:0.4s ease-in;-moz-transition:0.4s ease-in;-o-transition:0.4s ease-in;-ms-transition:0.4s ease-in;transition:0.4s ease-in;border:2px solid #525252;padding:0 .2em;-webkit-border-radius:10px;border-radius:10px}
+h1{font-family:'Alegreya Sans',sans-serif;color:#525252;font-size:8em;font-weight:100;text-align:center;text-transform:lowercase;line-height:1;margin:0;-webkit-transition:0.8s;-moz-transition:0.8s;-o-transition:0.8s;-ms-transition:0.8s;transition:0.8s;}
+h1 span{border:2px solid #525252;padding:0 .2em;-webkit-border-radius:10px;border-radius:10px}
 h1:hover{color:#fff;}
 h1:hover span{border-color:#fff}
 h2{color:#2980b9;font-size:2.4em;font-weight:800;text-align:center;text-transform:lowercase;line-height:1;margin:1em 0}
