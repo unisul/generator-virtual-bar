@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator Virtual Bar</title>
+
+    <!-- CSS -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Alegreya+Sans:100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <header>
+        <h1><span>Generator Virtual Bar</span></h1>
+    </header>
+
+    <section id="filters">
+        <div class="container">
+            <form action="#" class="advanced-filters">
+                <div class="filter-box">
+                    <div class="filter-item">
+                        <label for="modelo">Modelo<span>*</span></label>
+                        <select name="bar-modelo" id="modelo">
+                            <option value="selecione">-- Escolha um modelo</option>
+                            <option value="info">Info (info)</option>
+                            <option value="warning">Amarela (warning)</option>
+                            <option value="success">Verde (success)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-box">
+                    <div class="filter-item">
+                        <label for="titulo">Título</label>
+                        <input type="text" name="" id="titulo" />
+                    </div>
+                </div>
+                <div class="filter-box filter-description">
+                    <div class="filter-item">
+                        <label for="descricao">Descrição<span>*</span></label>
+                        <input type="text" name="" id="descricao" />
+                    </div>
+                </div>
+                <div class="filter-box filter-link">
+                    <div class="filter-item">
+                        <label for="link">Link</label>
+                        <input type="text" name="" id="link" />
+                    </div>
+                </div>
+                <div class="filter-box filter-button">
+                    <div class="filter-item">
+                        <label for="botao">Texto do Botão</label>
+                        <input type="text" name="" id="botao" />
+                    </div>
+                </div>
+                <div class="filter-box filter-generator">
+                    <div class="filter-item">
+                        <button id="gerar">Gerar Código</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="result">
+        <div class="container">
+            <h2>Resultado</h2>
+            <div class="result-item"><div class="alert alerta-success">
+    <button data-dismiss="alert" class="item-close" type="button">×</button>
+    <p>
+        <strong>Assista dia dd/mm às hh:mm horas!</strong> Seminário Ao Vivo - Nome Completo do Seminário
+        <a class="btn btn-success" href="#">Inscreva-se</a>
+    </p>
+</div></div>
+        </div>
+    </section>
+
+    <section id="code">
+        <div class="container">
+            <h2>Código</h2>
+            <pre><code id="generated-code" class="html">
+            
+            </code></pre>
+        </div>
+    </section>
+    
+    <!-- JS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>

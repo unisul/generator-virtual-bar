@@ -1,0 +1,18 @@
+{
+  "name": "generator-virtual-bar",
+  "description": "Generator Unisul Virtual Bar",
+  "version": "0.1.0",
+  "homepage": "http://www.unisulvirtual.com.br",
+  "author": {
+    "name": "Diogo Moretti",
+    "url": "http://github.com/diogomoretti"
+  },
+  "devDependencies": {
+    "gulp": "~3.5.2",
+    "gulp-stylus": "0.0.12",
+    "gulp-connect": "~0.3.0"
+  },
+  "dependencies": {
+    "gulp-plumber": "~0.5.6"
+  }
+}
