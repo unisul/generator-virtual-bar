@@ -2,7 +2,9 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
     stylus = require('gulp-stylus'),
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'),
+    uglify = require('gulp-uglify'),
+    rename = require("gulp-rename");
 
 var paths = {
     styles: 'stylus/**/*',
@@ -19,6 +21,14 @@ gulp.task('connect', connect.server({
         browser: 'chrome' // if not working OS X browser: 'Google Chrome'
     }
 }));
+
+// Uglify
+gulp.task('compress', function() {
+    gulp.src('js/*.js')
+        .pipe(uglify())
+        .pipe(rename('main.min.js'))
+        .pipe(gulp.dest('js'))
+});
 
 // HTML task
 gulp.task('html', function () {

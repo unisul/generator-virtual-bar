@@ -52,9 +52,10 @@
                         <input type="text" name="" id="botao" />
                     </div>
                 </div>
-                <div class="filter-box filter-generator">
+                <div class="filter-box filter-button-link">
                     <div class="filter-item">
-                        <button id="gerar">Gerar Código</button>
+                        <label for="botao-link">Link do Botão</label>
+                        <input type="text" name="" id="botao-link" />
                     </div>
                 </div>
             </form>
@@ -70,9 +71,8 @@
                 <div class="alert alerta-info" id="alert-preview">
                     <button data-dismiss="alert" class="item-close" type="button">×</button>
                     <p>
-                        <strong>Título do Seminário</strong>
-                        <span>Seminário Ao Vivo - Nome Completo do Seminário</span>
-                        <a class="btn btn-info" href="#">Inscreva-se</a>
+                        <a id="link-preview"><strong>Título do Seminário</strong><span>Seminário Ao Vivo - Nome Completo do Seminário</span></a>
+                        <a class="btn btn-info hidden" href="#">Inscreva-se</a>
                     </p>
                 </div>
                 <!--/ HTML of alert -->
@@ -84,7 +84,7 @@
     <section id="code">
         <div class="container">
             <h2>Código</h2>
-            <pre><code id="generated-code" class="html"><div class="init"></div><div class="link-open"></div><div class="title"></div><div class="desc"></div><div class="botao"></div><div class="link-open"></div><div class="footer"></div></code></pre>
+            <pre><code id="generated-code"><div class="init"></div><div class="link-open"></div><div class="title"></div><div class="desc"></div><div class="link-close"></div><div class="button"></div><div class="footer"></div></code></pre>
         </div>
     </section>
     

@@ -57,6 +57,9 @@ code
   color: #333
   font-size: 1.6em
 
+.hidden
+  display: none !important
+
 .container
   max-width: 1040px
   margin: 0 auto
@@ -80,13 +83,16 @@ code
 .filter-button
   width: 30em
 
+.filter-button-link
+  width: 26.5em
+
 .filter-generator
   position: relative
 
 .filter-item
   display: block
 
-#descricao, #link, #botao
+#descricao, #link, #botao, #botao-link
   width: 100%
 
 #gerar
@@ -162,6 +168,7 @@ input, select
     margin-left: 10px !important
     padding: 3px 12px
     margin-bottom: 3px
+    text-decoration: none !important
   .btn-success
     background: #57b370
     text-decoration: none
@@ -182,13 +189,13 @@ input, select
 
 .alerta-success
   background-color: #dff0d8
-  background-position: 12px -109px
+  background-position: 12px -110px
   border-color: #c4e3b7
   color: #468847
 
 .alerta-info
   background-color: #d9edf7 !important
-  background-position: 12px -51px !important
+  background-position: 12px -49px !important
   border-color: #bee9f1 !important
   color: #3985ac !important
 

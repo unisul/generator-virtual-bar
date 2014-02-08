@@ -25,7 +25,7 @@ jQuery.fn.selectText = function(){
 //});
 
 // Generator
-var fields = ['#titulo', '#descricao']
+var fields = ['#titulo', '#descricao', '#link', '#botao', '#botao-link']
 
 function generator(t, v) {
 
@@ -34,6 +34,9 @@ function generator(t, v) {
     var target = $('#generated-code')
     var targetTitle = target.find('.title')
     var targetDescription = target.find('.desc')
+    var targetLink = target.find('.link-open')
+    var targetLinkClose = target.find('.link-close')
+    var targetButton = target.find('.button')
     var alertPreview = $('#alert-preview')
 
     switch (tag) {
@@ -53,6 +56,32 @@ function generator(t, v) {
             } else {
                 targetDescription.html(null)
                 alertPreview.find('span').text('')
+            }
+            break;
+        case '#link':
+            if(value.length > 0) {
+                targetLink.html(htmlEntities('        <a href="') + value + htmlEntities('">'))
+                targetLinkClose.html(htmlEntities('        </a>'))
+                $('#link-preview').attr('href', value)
+            } else {
+                targetLink.html(null)
+                targetLinkClose.html(null)
+                $('#link-preview').removeAttr('href')
+            }
+            break;
+        case '#botao':
+            if(value.length > 0) {
+                targetButton.html(htmlEntities('        <a href="') + $('#botao-link').val() + htmlEntities('">') + value + htmlEntities('</a>'))
+                alertPreview.find('.btn').removeClass('hidden').text(value)
+            } else {
+                targetButton.html(null)
+                alertPreview.find('.btn').addClass('hidden').text(value)
+            }
+            break;
+        case '#botao-link':
+            if(value.length > 0) {
+                targetButton.html(htmlEntities('        <a href="') + value + htmlEntities('">') + $('#botao').val() + htmlEntities('</a>'))
+                alertPreview.find('.btn').attr('href', value)
             }
             break;
         default:
@@ -75,7 +104,7 @@ $('#modelo').on('change', function() {
     monta(modelSelected)
 
     var alertPreview = $('#alert-preview')
-    alertPreview.removeClass();
+    alertPreview.removeClass()
     alertPreview.addClass('alert alerta-'+modelSelected)
 
 });
