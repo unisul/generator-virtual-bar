@@ -22,7 +22,6 @@
                     <div class="filter-item">
                         <label for="modelo">Modelo<span>*</span></label>
                         <select name="bar-modelo" id="modelo">
-                            <option value="selecione">-- Escolha um modelo</option>
                             <option value="info">Info (info)</option>
                             <option value="warning">Amarela (warning)</option>
                             <option value="success">Verde (success)</option>
@@ -65,22 +64,27 @@
     <section id="result">
         <div class="container">
             <h2>Resultado</h2>
-            <div class="result-item"><div class="alert alerta-success">
-    <button data-dismiss="alert" class="item-close" type="button">×</button>
-    <p>
-        <span>Seminário Ao Vivo - Nome Completo do Seminário</span>
-        <a class="btn btn-success" href="#">Inscreva-se</a>
-    </p>
-</div></div>
+            <div class="result-item">
+
+                <!-- HTML of alert -->
+                <div class="alert alerta-info" id="alert-preview">
+                    <button data-dismiss="alert" class="item-close" type="button">×</button>
+                    <p>
+                        <strong>Título do Seminário</strong>
+                        <span>Seminário Ao Vivo - Nome Completo do Seminário</span>
+                        <a class="btn btn-info" href="#">Inscreva-se</a>
+                    </p>
+                </div>
+                <!--/ HTML of alert -->
+
+            </div>
         </div>
     </section>
 
     <section id="code">
         <div class="container">
             <h2>Código</h2>
-            <pre><code id="generated-code" class="html">
-            
-            </code></pre>
+            <pre><code id="generated-code" class="html"><div class="init"></div><div class="link-open"></div><div class="title"></div><div class="desc"></div><div class="botao"></div><div class="link-open"></div><div class="footer"></div></code></pre>
         </div>
     </section>
     

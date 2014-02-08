@@ -20,50 +20,73 @@ jQuery.fn.selectText = function(){
     }
 };
 
-$('pre').on('click', function() {
-    $(this).selectText();
-});
+//$('pre').on('click', function() {
+//    $(this).selectText();
+//});
 
 // Generator
-var generator = {
+var fields = ['#titulo', '#descricao']
 
-    config: {
-        resultPreview: '.result-item',
-        generatedCode: '#generated-code',
-        fields: ['#titulo', '#outro'],
-        count: 0
-    },
+function generator(t, v) {
 
-    init: function(config) {
-        $.extend(generator.config, config);
-        $config = generator.config;
-        this.refresh($config);
-    },
+    var value = v
+    var tag = t
+    var target = $('#generated-code')
+    var targetTitle = target.find('.title')
+    var targetDescription = target.find('.desc')
+    var alertPreview = $('#alert-preview')
 
-    refresh: function (config) {
-        var getHTMLContent = $($config.resultPreview).html();
-        $($config.generatedCode).html(htmlEntities(getHTMLContent));
-    },
-
-    autoComplete: function (config) {
-        $.extend(generator.config, config);
-        $config = generator.config;
-        $('.alert').find('strong').text($('#titulo').val());
-
-        if($config.count === 0) {
-            $('.alert').find('p').append('<strong>');
-            $config.count++;
-        }
-
-        this.refresh();
+    switch (tag) {
+        case '#titulo':
+            if(value.length > 0) {
+                targetTitle.html(htmlEntities('        <strong>') + value + htmlEntities('</strong>'))
+                alertPreview.find('strong').text(value)
+            } else {
+                targetTitle.html(null)
+                alertPreview.find('strong').text('')
+            }
+            break;
+        case '#descricao':
+            if(value.length > 0) {
+                targetDescription.html(htmlEntities('        <span>') + value + htmlEntities('</span>'))
+                alertPreview.find('span').text(value)
+            } else {
+                targetDescription.html(null)
+                alertPreview.find('span').text('')
+            }
+            break;
+        default:
+            statements_def
+            break;
     }
 
-};
+}
 
-generator.init();
+function monta(m) {
+    var modelo = m;
+    $('#generated-code').find('.init').html(htmlEntities('<div class="alert alerta-'+modelo+'">\n    <button data-dismiss="alert" class="item-close" type="button">×</button>\n    <p>'));
+    $('#generated-code').find('.footer').html(htmlEntities('    </p>\n</div>'));
+}
 
-$.each(generator.config.fields, function(key, value) {
+$('#modelo').on('change', function() {
+
+    var modelSelected = $('#modelo option:selected').val();
+
+    monta(modelSelected)
+
+    var alertPreview = $('#alert-preview')
+    alertPreview.removeClass();
+    alertPreview.addClass('alert alerta-'+modelSelected)
+
+});
+
+var modelo = $('#modelo').val();
+monta(modelo);
+
+
+
+$.each(fields, function(key, value) {
     $(value).on('keyup', function() {
-        generator.autoComplete();
+        generator($(value)['selector'], $(value).val());
     });
 });
