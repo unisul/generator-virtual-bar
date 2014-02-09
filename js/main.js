@@ -82,6 +82,9 @@ function generator(t, v) {
             if(value.length > 0) {
                 targetButton.html(htmlEntities('        <a href="') + value + htmlEntities('">') + $('#botao').val() + htmlEntities('</a>'))
                 alertPreview.find('.btn').attr('href', value)
+            } else {
+                targetButton.html(htmlEntities('        <a href="') + '#' + htmlEntities('">') + $('#botao').val() + htmlEntities('</a>'))
+                alertPreview.find('.btn').attr('href', '#')
             }
             break;
         default:
