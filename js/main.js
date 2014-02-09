@@ -20,9 +20,9 @@ jQuery.fn.selectText = function(){
     }
 };
 
-//$('pre').on('click', function() {
-//    $(this).selectText();
-//});
+$('pre').on('click', function() {
+    $(this).selectText();
+});
 
 // Generator
 var fields = ['#titulo', '#descricao', '#link', '#botao', '#botao-link']
