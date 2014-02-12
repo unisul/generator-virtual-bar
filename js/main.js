@@ -26,13 +26,13 @@ GeneratorVirtualBar = {
         barModel: $('#modelo'),
         target: $('#generated-code'),
         alertPreview: $('#alert-preview'),
-        linkPreview: $('#link-preview'),
-        modelSelected: $('#modelo option:selected').val()
+        linkPreview: $('#link-preview')
     },
 
     init: function() {
         s = this.settings;
-        this.setModel(s.modelSelected);
+        var modelSelected = $(s.barModel['selector'] + ' option:selected').val();
+        this.setModel(modelSelected);
     },
 
     setModel: function (v) {
