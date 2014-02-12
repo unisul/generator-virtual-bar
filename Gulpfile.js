@@ -2,9 +2,7 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
     stylus = require('gulp-stylus'),
-    plumber = require('gulp-plumber'),
-    uglify = require('gulp-uglify'),
-    rename = require("gulp-rename");
+    plumber = require('gulp-plumber');
 
 var paths = {
     styles: 'stylus/**/*',
@@ -18,7 +16,7 @@ gulp.task('connect', connect.server({
     port: 1337,
     livereload: true,
     open: {
-        browser: 'chrome' // if not working OS X browser: 'Google Chrome'
+        browser: 'chrome'
     }
 }));
 

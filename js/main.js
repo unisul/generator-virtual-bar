@@ -1,8 +1,4 @@
 // HELPERS
-function htmlEntities(str) {
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
 jQuery.fn.selectText = function(){
     var doc = document;
     var element = this[0];
@@ -20,105 +16,114 @@ jQuery.fn.selectText = function(){
     }
 };
 
+// GENERATOR VIRTUAL BAR
+// @diogombb
+var s,
+GeneratorVirtualBar = {
+
+    settings: {
+        fields: ['#titulo', '#descricao', '#link', '#botao', '#botao-link'],
+        barModel: $('#modelo'),
+        target: $('#generated-code'),
+        alertPreview: $('#alert-preview'),
+        linkPreview: $('#link-preview'),
+        modelSelected: $('#modelo option:selected').val()
+    },
+
+    init: function() {
+        s = this.settings;
+        this.setModel(s.modelSelected);
+    },
+
+    setModel: function (v) {
+        s = this.settings;
+        s.target.find('.init').html(this.convertoToHTMLEntities('<div class="alert alerta-' + v + '">\n    <button data-dismiss="alert" class="item-close" type="button">×</button>\n    <p>'));
+        s.target.find('.footer').html(this.convertoToHTMLEntities('    </p>\n</div>'));
+        s.alertPreview.removeClass();
+        s.alertPreview.addClass('alert alerta-' + v);
+    },
+
+    generate: function (t, v) {
+        var value = v, 
+            tag = t;
+
+        switch (tag) {
+            case '#titulo':
+                if(value.length > 0) {
+                    s.target.find('.title').html(this.convertoToHTMLEntities('        <strong>') + value + this.convertoToHTMLEntities('</strong>'))
+                    s.alertPreview.find('strong').text(value)
+                } else {
+                    s.target.find('.title').html(null)
+                    s.alertPreview.find('strong').text('')
+                }
+                break;
+            case '#descricao':
+                if(value.length > 0) {
+                    s.target.find('.desc').html(this.convertoToHTMLEntities('        <span>') + value + this.convertoToHTMLEntities('</span>'))
+                    s.alertPreview.find('span').text(value)
+                } else {
+                    s.target.find('.desc').html(null)
+                    s.alertPreview.find('span').text('')
+                }
+                break;
+            case '#link':
+                if(value.length > 0) {
+                    s.target.find('.link-open').html(this.convertoToHTMLEntities('        <a href="') + value + this.convertoToHTMLEntities('">'))
+                    s.target.find('.link-close').html(this.convertoToHTMLEntities('        </a>'))
+                    s.linkPreview.attr('href', value)
+                } else {
+                    s.target.find('.link-open').html(null)
+                    s.target.find('.link-close').html(null)
+                    s.linkPreview.removeAttr('href')
+                }
+                break;
+            case '#botao':
+                if(value.length > 0) {
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + $('#botao-link').val() + this.convertoToHTMLEntities('">') + value + this.convertoToHTMLEntities('</a>'))
+                    s.alertPreview.find('.btn').removeClass('hidden').text(value)
+                } else {
+                    s.target.find('.button').html(null)
+                    s.alertPreview.find('.btn').addClass('hidden').text(value)
+                }
+                break;
+            case '#botao-link':
+                if(value.length > 0) {
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + value + this.convertoToHTMLEntities('">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
+                    s.alertPreview.find('.btn').attr('href', value)
+                } else {
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + '#' + this.convertoToHTMLEntities('">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
+                    s.alertPreview.find('.btn').attr('href', '#')
+                }
+                break;
+            default:
+                return false;
+                break;
+        }
+    },
+
+    convertoToHTMLEntities: function (str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+
+    changeModel: function () {
+        var v = $(this)[0]['value'];
+        GeneratorVirtualBar.setModel(v);
+    }
+
+};
+
+// Add Events
+GeneratorVirtualBar.settings.barModel.on('change', GeneratorVirtualBar.changeModel);
+
+$.each(GeneratorVirtualBar.settings.fields, function(key, value) {
+    $(value).on('keyup', function() {
+        GeneratorVirtualBar.generate($(value)['selector'], $(value).val());
+    });
+});
+
 $('pre').on('click', function() {
     $(this).selectText();
 });
 
-// Generator
-var fields = ['#titulo', '#descricao', '#link', '#botao', '#botao-link']
-
-function generator(t, v) {
-
-    var value = v
-    var tag = t
-    var target = $('#generated-code')
-    var targetTitle = target.find('.title')
-    var targetDescription = target.find('.desc')
-    var targetLink = target.find('.link-open')
-    var targetLinkClose = target.find('.link-close')
-    var targetButton = target.find('.button')
-    var alertPreview = $('#alert-preview')
-
-    switch (tag) {
-        case '#titulo':
-            if(value.length > 0) {
-                targetTitle.html(htmlEntities('        <strong>') + value + htmlEntities('</strong>'))
-                alertPreview.find('strong').text(value)
-            } else {
-                targetTitle.html(null)
-                alertPreview.find('strong').text('')
-            }
-            break;
-        case '#descricao':
-            if(value.length > 0) {
-                targetDescription.html(htmlEntities('        <span>') + value + htmlEntities('</span>'))
-                alertPreview.find('span').text(value)
-            } else {
-                targetDescription.html(null)
-                alertPreview.find('span').text('')
-            }
-            break;
-        case '#link':
-            if(value.length > 0) {
-                targetLink.html(htmlEntities('        <a href="') + value + htmlEntities('">'))
-                targetLinkClose.html(htmlEntities('        </a>'))
-                $('#link-preview').attr('href', value)
-            } else {
-                targetLink.html(null)
-                targetLinkClose.html(null)
-                $('#link-preview').removeAttr('href')
-            }
-            break;
-        case '#botao':
-            if(value.length > 0) {
-                targetButton.html(htmlEntities('        <a href="') + $('#botao-link').val() + htmlEntities('">') + value + htmlEntities('</a>'))
-                alertPreview.find('.btn').removeClass('hidden').text(value)
-            } else {
-                targetButton.html(null)
-                alertPreview.find('.btn').addClass('hidden').text(value)
-            }
-            break;
-        case '#botao-link':
-            if(value.length > 0) {
-                targetButton.html(htmlEntities('        <a href="') + value + htmlEntities('">') + $('#botao').val() + htmlEntities('</a>'))
-                alertPreview.find('.btn').attr('href', value)
-            } else {
-                targetButton.html(htmlEntities('        <a href="') + '#' + htmlEntities('">') + $('#botao').val() + htmlEntities('</a>'))
-                alertPreview.find('.btn').attr('href', '#')
-            }
-            break;
-        default:
-            statements_def
-            break;
-    }
-
-}
-
-function monta(m) {
-    var modelo = m;
-    $('#generated-code').find('.init').html(htmlEntities('<div class="alert alerta-'+modelo+'">\n    <button data-dismiss="alert" class="item-close" type="button">×</button>\n    <p>'));
-    $('#generated-code').find('.footer').html(htmlEntities('    </p>\n</div>'));
-}
-
-$('#modelo').on('change', function() {
-
-    var modelSelected = $('#modelo option:selected').val();
-
-    monta(modelSelected)
-
-    var alertPreview = $('#alert-preview')
-    alertPreview.removeClass()
-    alertPreview.addClass('alert alerta-'+modelSelected)
-
-});
-
-var modelo = $('#modelo').val();
-monta(modelo);
-
-
-
-$.each(fields, function(key, value) {
-    $(value).on('keyup', function() {
-        generator($(value)['selector'], $(value).val());
-    });
-});
+// Init GeneratorVirtualBar
+GeneratorVirtualBar.init();
