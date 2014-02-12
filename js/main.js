@@ -17,7 +17,7 @@ jQuery.fn.selectText = function(){
 };
 
 // GENERATOR VIRTUAL BAR
-// @diogombb
+// @author github.com/diogomoretti
 var s,
 GeneratorVirtualBar = {
 
