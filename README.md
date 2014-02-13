@@ -21,7 +21,7 @@ In the project folder, just type:
 
 ### Upload files to a github pages
 1. Verify changes: `git status`
-2. Add all included files, if necessary: `git add .`
+2. Add all included/modify files, if necessary: `git add .`
 3. Commit your changes: `git commit -m "Any message"`
 4. Push files to a github pages: `git push origin gh-pages`
 

@@ -162,6 +162,10 @@ input, select
   background-repeat: no-repeat
   font-size: 1.3em
   border: 1px solid
+  a
+    text-decoration: none
+    &:hover
+      text-decoration: underline
   .btn
     text-shadow: none !important
     border-radius: 4px
@@ -169,6 +173,7 @@ input, select
     padding: 3px 12px
     margin-bottom: 3px
     text-decoration: none !important
+    color: #fff !important
   .btn-success
     background: #57b370
     text-decoration: none
@@ -186,18 +191,24 @@ input, select
   background-position: 12px 11px
   border-color: #f7edb8
   color: #c09853
+  a
+    color: #c09853
 
 .alerta-success
   background-color: #dff0d8
   background-position: 12px -110px
   border-color: #c4e3b7
   color: #468847
+  a
+    color: #468847
 
 .alerta-info
   background-color: #d9edf7 !important
   background-position: 12px -49px !important
   border-color: #bee9f1 !important
   color: #3985ac !important
+  a
+    color: #3985ac !important
 
 @keyframes colorPulse
   0%

@@ -17,7 +17,7 @@ jQuery.fn.selectText = function(){
 };
 
 // GENERATOR VIRTUAL BAR
-// @author github.com/diogomoretti
+// @author: github.com/diogomoretti
 var s,
 GeneratorVirtualBar = {
 
@@ -79,7 +79,7 @@ GeneratorVirtualBar = {
                 break;
             case '#botao':
                 if(value.length > 0) {
-                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + $('#botao-link').val() + this.convertoToHTMLEntities('">') + value + this.convertoToHTMLEntities('</a>'))
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + $('#botao-link').val() + this.convertoToHTMLEntities('" class="btn">') + value + this.convertoToHTMLEntities('</a>'))
                     s.alertPreview.find('.btn').removeClass('hidden').text(value)
                 } else {
                     s.target.find('.button').html(null)
@@ -88,10 +88,10 @@ GeneratorVirtualBar = {
                 break;
             case '#botao-link':
                 if(value.length > 0) {
-                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + value + this.convertoToHTMLEntities('">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + value + this.convertoToHTMLEntities('" class="btn">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
                     s.alertPreview.find('.btn').attr('href', value)
                 } else {
-                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + '#' + this.convertoToHTMLEntities('">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + '#' + this.convertoToHTMLEntities('" class="btn">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
                     s.alertPreview.find('.btn').attr('href', '#')
                 }
                 break;
