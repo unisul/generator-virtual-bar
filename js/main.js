@@ -79,8 +79,8 @@ GeneratorVirtualBar = {
                 break;
             case '#botao':
                 if(value.length > 0) {
-                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + $('#botao-link').val() + this.convertoToHTMLEntities('" class="btn">') + value + this.convertoToHTMLEntities('</a>'))
-                    s.alertPreview.find('.btn').removeClass('hidden').text(value)
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + $('#botao-link').val() + this.convertoToHTMLEntities('" class="btn btn-' + this.getModel() + '">') + value + this.convertoToHTMLEntities('</a>'))
+                    s.alertPreview.find('.btn').removeClass('btn-info btn-warning btn-success').addClass('btn-' + this.getModel()).removeClass('hidden').text(value)
                 } else {
                     s.target.find('.button').html(null)
                     s.alertPreview.find('.btn').addClass('hidden').text(value)
@@ -88,10 +88,10 @@ GeneratorVirtualBar = {
                 break;
             case '#botao-link':
                 if(value.length > 0) {
-                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + value + this.convertoToHTMLEntities('" class="btn">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + value + this.convertoToHTMLEntities('" class="btn btn-' + this.getModel() + '">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
                     s.alertPreview.find('.btn').attr('href', value)
                 } else {
-                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + '#' + this.convertoToHTMLEntities('" class="btn">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
+                    s.target.find('.button').html(this.convertoToHTMLEntities('        <a href="') + '#' + this.convertoToHTMLEntities('" class="btn btn-' + this.getModel() + '">') + $('#botao').val() + this.convertoToHTMLEntities('</a>'))
                     s.alertPreview.find('.btn').attr('href', '#')
                 }
                 break;
@@ -108,6 +108,10 @@ GeneratorVirtualBar = {
     changeModel: function () {
         var v = $(this)[0]['value'];
         GeneratorVirtualBar.setModel(v);
+    },
+
+    getModel: function () {
+        return $(s.barModel['selector'] + ' option:selected').val();
     }
 
 };
